@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portofolio Irfan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="veil"></div>
+
+<header>
+  <a href="#home" class="logo" aria-label="Beranda">Portofolio</a>
+  <nav id="nav">
+    <a href="#home" class="on">Home</a>
+    <a href="#hobi">Hobi</a>
+    <a href="#keahlian">Keahlian</a>
+    <a href="#pengalaman">Pengalaman</a>
+    <a href="#prestasi">Prestasi</a>
+    <a href="#portofolio">Portofolio</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">☰</button>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home">
+  <div>
+    <div class="hello">Welcome To Portofolio</div>
+    <h1 class="name" id="heroName">
+      <span data-d="30">Ahmad</span>
+      <span data-d="55">Irfan</span>
+    </h1>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="rig" id="rig">
+      <div class="layer">
+        <div class="ring r2"></div>
+        <div class="ring"></div>
+        <div class="ring r3"></div>
+      </div>
+      <div class="photo" id="photo">
+    <img
+        id="img"
+        src="assets/irfann1.png"
+        alt="Foto Irfan"
+    >
+
+    <div class="empty" id="empty" hidden>
+        <div>
+            <b>Foto belum dipasang</b>
+            Taruh fotomu di
+            <br><code id="emptyPath">assets/irfan.png</code>
+        </div>
+    </div>
+</div>
+      <div class="chip c1">Content Creator</div>
+      <div class="chip c2">High-Achieving Student</div>
+      <div class="chip c3">Beasiswa</div>
+      <div class="orb"></div>
+    </div>
+
+  </div>
+
+  <aside class="aboutme">
+    <h3>About Me</h3>
+    <p>Mahasiswa yang percaya bahwa setiap proses belajar dan pencapaian layak untuk dibagikan. Sebagai High-Achieving Student dan penerima beasiswa, fokus utama saya adalah tumbuh bersama audiens lewat konten yang positif, kreatif, dan inspiratif.</p>
+    <h3>Find me on</h3>
+    <div class="socials">
+      <a
+  class="soc"
+  id="hsLi"
+  href="https://www.linkedin.com/in/ahmad-irfan-5141b5434"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="LinkedIn"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+  </svg>
+</a>
+
+<a
+  class="soc"
+  id="hsIg"
+  href="https://www.instagram.com/irfannnihhh_?exln=ang4bmJ1ZnFubDZi  "
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Instagram"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+  </svg>
+</a>
+
+<a
+  class="soc"
+  id="hsTt"
+  href="https://www.tiktok.com/@irfnnn_14?is_from_webapp=1&sender_device=pc"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="TikTok"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+    viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-2.9 2.74 2.9 2.9 0 1 1 0-5.8c.3 0 .6.05.87.14v-3.52a6.4 6.4 0 0 0-.87-.06A6.35 6.35 0 1 0 15.82 15V8.01a8.2 8.2 0 0 0 4.8 1.54V6.1a4.85 4.85 0 0 1-1.03-.11z"/>
+  </svg>
+</a>
+    </div>
+  </aside>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+  <div class="grid g4">
+    <div class="tilt rv" data-tilt><div class="ico">🎓</div><h3>Mahasiswa</h3><p>Aktif belajar dan berprestasi di kampus.</p></div>
+    <div class="tilt rv" data-tilt><div class="ico">🎥</div><h3>Kreator</h3><p>Membuat konten yang positif dan inspiratif.</p></div>
+    <div class="tilt rv" data-tilt><div class="ico">🏅</div><h3>Penerima Beasiswa</h3><p>Membuktikan kerja keras lewat hasil nyata.</p></div>
+    <div class="tilt rv" data-tilt><div class="ico">🤝</div><h3>Kolaborasi</h3><p>Terbuka untuk kerja sama dan endorsement.</p></div>
+  </div>
+</section>
+
+<!-- HOBI -->
+<section id="hobi">
+  <div class="rv"><h2>Hobi</h2><p class="lead">Hal-hal yang bikin aku semangat. Arahkan kursor ke karosel untuk menjeda putaran, atau pakai tombol panah untuk menggesernya.</p></div>
+  <div class="hobi-stage" id="hobiStage"><div class="carousel" id="carousel"></div></div>
+  <div class="hnav"><button id="hPrev" aria-label="Hobi sebelumnya">‹</button><span id="hName">Fotografi</span><button id="hNext" aria-label="Hobi berikutnya">›</button></div>
+</section>
+
+<!-- KEAHLIAN -->
+<section id="keahlian">
+  <div class="rv"><h2>Keahlian</h2><p class="lead">Teknologi yang aku pakai. Arahkan kursor ke logonya untuk melihat efek sinarnya.</p></div>
+  <div class="techgrid">
+    <!-- Tiap logo = 1 blok .tech (logo SVG langsung di dalam kode, tanpa file luar). --c = warna sinar saat hover. -->
+    <div class="tech rv" data-tilt style="--c:#e34f26"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="hs"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438z"/></clipPath><clipPath id="hr"><rect x="11.97" y="0" width="13" height="24"/></clipPath></defs><g clip-path="url(#hs)"><rect width="24" height="24" fill="#EBEBEB"/><rect x="11.97" width="13" height="24" fill="#fff"/></g><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157z" fill="#E44D26"/><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157z" fill="#F16529" clip-path="url(#hr)"/></svg></div><span>HTML</span></div>
+    <div class="tech rv" data-tilt style="--c:#2965f1"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="cs"><path d="M1.5 0h21l-1.91 21.563L11.939 24l-8.564-2.438z"/></clipPath><clipPath id="cr"><rect x="11.97" y="0" width="13" height="24"/></clipPath></defs><g clip-path="url(#cs)"><rect width="24" height="24" fill="#EBEBEB"/><rect x="11.97" width="13" height="24" fill="#fff"/></g><path d="M1.5 0h21l-1.91 21.563L11.939 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="#264DE4"/><path d="M1.5 0h21l-1.91 21.563L11.939 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="#2965F1" clip-path="url(#cr)"/></svg></div><span>CSS</span></div>
+    <div class="tech rv" data-tilt style="--c:#f7df1e"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" fill="#000"/><path d="M0 0h24v24H0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179z" fill="#F7DF1E"/></svg></div><span>JavaScript</span></div>
+    <div class="tech rv" data-tilt style="--c:#4b8bbe"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gPy" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#3C7BB5"/><stop offset=".5" stop-color="#3C7BB5"/><stop offset=".5" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFD43B"/></linearGradient></defs><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z" fill="url(#gPy)"/></svg></div><span>Python</span></div>
+    <div class="tech rv" data-tilt style="--c:#8993be"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="12" ry="6.3125" fill="#000"/><path d="M7.01 10.207h-.944l-.515 2.648h.838q.834 0 1.242-.314.408-.315.55-1.049.137-.705-.124-.995-.262-.29-1.047-.29M12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12s-5.373-6.312-12-6.312m-3.26 7.451c-.261.25-.575.438-.917.551q-.505.163-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65q1.195 0 1.744.628.549.627.33 1.752a2.8 2.8 0 0 1-.305.847q-.215.383-.561.703m4.024.715.543-2.799q.094-.478-.068-.651-.16-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218q1.15 0 1.586.401c.436.401.378.7.263 1.299l-.572 2.944zm7.597-2.265a2.8 2.8 0 0 1-.305.847q-.214.383-.561.703a2.44 2.44 0 0 1-.917.551q-.504.163-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649q1.195 0 1.744.628.55.626.331 1.751m-2.595-1.382h-.943l-.516 2.648h.838q.835 0 1.242-.314.407-.315.551-1.049.137-.705-.125-.995c-.262-.29-.524-.29-1.047-.29" fill="#777BB4"/></svg></div><span>PHP</span></div>
+    <div class="tech rv" data-tilt style="--c:#ff2d20"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.642 5.43a.4.4 0 0 1 .014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934a.38.38 0 0 1-.188.326L9.93 23.949a.3.3 0 0 1-.066.027q-.012.005-.024.01a.35.35 0 0 1-.192 0q-.016-.005-.03-.012-.031-.01-.062-.025L.533 18.755a.38.38 0 0 1-.189-.326V2.974q0-.05.014-.098c.003-.012.01-.02.014-.032a.4.4 0 0 1 .023-.058c.004-.013.015-.022.023-.033l.033-.045q.018-.014.037-.027.02-.018.041-.034H.53L5.043.05a.38.38 0 0 1 .375 0L9.93 2.647h.002q.021.015.04.033l.038.027c.013.014.02.03.033.045.008.011.02.021.025.033q.014.029.024.058c.003.011.01.021.013.032q.014.047.014.098v9.652l3.76-2.164V5.527q0-.05.013-.098.007-.014.013-.032a1 1 0 0 1 .024-.059c.007-.012.018-.02.025-.033q.017-.023.033-.043.019-.017.037-.028.02-.017.041-.032h.001l4.513-2.598a.38.38 0 0 1 .375 0l4.513 2.598c.016.01.027.021.042.031q.019.014.036.028.018.022.034.044c.008.012.019.021.024.033a.3.3 0 0 1 .024.06q.01.015.015.032m-.74 5.032V6.179l-1.578.908-2.182 1.256v4.283zm-4.51 7.75v-4.287l-2.147 1.225-6.126 3.498v4.325zM1.093 3.624v14.588l8.273 4.761v-4.325l-4.322-2.445-.002-.003H5.04q-.02-.016-.04-.031-.018-.014-.035-.027l-.001-.002q-.018-.018-.031-.04-.016-.016-.028-.036h-.002q-.01-.022-.02-.047c-.006-.016-.014-.027-.018-.043l-.008-.057q-.005-.02-.006-.041V5.789l-2.18-1.257zM5.23.81 1.47 2.974l3.76 2.164 3.758-2.164zm1.956 13.505 2.182-1.256V3.624l-1.58.91-2.182 1.255v9.435zm11.581-10.95-3.76 2.163 3.76 2.163 3.759-2.164zm-.376 4.978L16.21 7.087l-1.58-.907v4.283l2.182 1.256 1.58.908zm-8.65 9.654 5.514-3.148 2.756-1.572-3.757-2.163-4.323 2.489-3.941 2.27z" fill="#FF2D20"/></svg></div><span>Laravel</span></div>
+    <div class="tech rv" data-tilt style="--c:#61dafb"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236m2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.17 2.17 0 0 0-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44a23.5 23.5 0 0 0-3.107-.534A24 24 0 0 0 12.769 4.7c1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442a23 23 0 0 0-3.113.538 15 15 0 0 1-.254-1.42c-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05q.684.704 1.36 1.564c-.44-.02-.89-.034-1.345-.034q-.691-.001-1.36.034c.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093q.61.874 1.183 1.86.557.961 1.018 1.946c-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87a25.6 25.6 0 0 1-4.412.005 27 27 0 0 1-1.183-1.86q-.557-.961-1.018-1.946a25 25 0 0 1 1.013-1.954c.38-.66.773-1.286 1.18-1.868A25 25 0 0 1 12 8.098zm-3.635.254c-.24.377-.48.763-.704 1.16q-.336.585-.635 1.174c-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0q1.044.153 2.006.387c-.18.632-.405 1.282-.66 1.933a25.952 25.952 0 0 0-1.345-2.32zm3.063.675q.727.226 1.375.498c1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493a24 24 0 0 0-1.1-2.98c.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98a23 23 0 0 0-1.086 2.964c-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474s1.12-1.742 2.852-2.476c.42-.18.88-.342 1.356-.494m11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39a26 26 0 0 0 1.341-2.338zm-9.945.02c.2.392.41.783.64 1.175q.345.586.705 1.143a22 22 0 0 1-2.006-.386c.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295a1.2 1.2 0 0 1-.553-.132c-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64q.661.032 1.345.034.691.001 1.36-.034c-.44.572-.895 1.095-1.345 1.565q-.684-.706-1.36-1.565" fill="#61DAFB"/></svg></div><span>React</span></div>
+    <div class="tech rv" data-tilt style="--c:#5fa04e"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.998 24c-.321 0-.641-.084-.922-.247L8.14 22.016c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 0 0 .272 0l8.795-5.076a.28.28 0 0 0 .134-.238V6.921a.28.28 0 0 0-.137-.242l-8.791-5.072a.28.28 0 0 0-.271 0L3.075 6.68a.28.28 0 0 0-.139.241v10.15a.27.27 0 0 0 .139.235l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675a1.86 1.86 0 0 1-.922-1.604V6.921c0-.659.353-1.275.922-1.603L11.075.236a1.93 1.93 0 0 1 1.848 0l8.794 5.082c.57.329.924.944.924 1.603v10.15a1.86 1.86 0 0 1-.924 1.604l-8.794 5.078c-.28.163-.599.247-.925.247m7.101-10.007c0-1.9-1.284-2.406-3.987-2.763-2.731-.361-3.009-.548-3.009-1.187 0-.528.235-1.233 2.258-1.233 1.807 0 2.473.389 2.747 1.607a.254.254 0 0 0 .247.199h1.141a.26.26 0 0 0 .186-.081.26.26 0 0 0 .067-.196c-.177-2.098-1.571-3.076-4.388-3.076-2.508 0-4.004 1.058-4.004 2.833 0 1.925 1.488 2.457 3.895 2.695 2.88.282 3.103.703 3.103 1.269 0 .983-.789 1.402-2.642 1.402-2.327 0-2.839-.584-3.011-1.742a.255.255 0 0 0-.253-.215h-1.137a.25.25 0 0 0-.254.253c0 1.482.806 3.248 4.655 3.248 2.788.001 4.386-1.096 4.386-3.013" fill="#5FA04E"/></svg></div><span>Node.js</span></div>
+    <div class="tech rv" data-tilt style="--c:#5d9cc4"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gMy" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="24"><stop offset="0" stop-color="#F29111"/><stop offset=".545" stop-color="#F29111"/><stop offset=".545" stop-color="#4FA3D1"/><stop offset="1" stop-color="#4FA3D1"/></linearGradient></defs><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a51 51 0 0 0-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a73 73 0 0 0-.195 4.41H0q.083-2.95.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095q.363 3.024.428 5.53zm4.017-4.08q-.567 3.069-1.492 4.46-.723 1.074-1.583 1.073-.228 0-.566-.138v-.494q.166.026.386.026.402 0 .647-.222.295-.27.295-.605 0-.233-.23-.944L6.23 14.615h.91l.727 2.36q.247.804.205 1.123.6-1.598.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135-1.016-.5q.136-.113.255-.25.649-.76.648-2.253 0-2.745-2.155-2.746-1.056 0-1.65.697-.646.762-.646 2.245-.001 1.459.574 2.14.524.615 1.583.615.396 0 .725-.098l1.325.772.36-.622zM15.5 17.588q-.337-.541-.337-1.736 0-2.09 1.27-2.09.666 0 .977.5.336.543.336 1.723 0 2.107-1.27 2.108-.667 0-.978-.5zm-1.658-.425q0 .706-.516 1.156-.514.45-1.384.45c-.543 0-1.064-.172-1.573-.515l.237-.476q.656.329 1.19.328.498 0 .783-.22a.75.75 0 0 0 .3-.615c0-.33-.23-.61-.648-.845-.388-.213-1.163-.657-1.163-.657-.422-.307-.632-.636-.632-1.177q0-.674.47-1.085.471-.416 1.22-.415.769 0 1.4.41l-.213.476a2.7 2.7 0 0 0-1.064-.23q-.425 0-.654.206a.69.69 0 0 0-.248.524c0 .328.234.61.666.85.393.215 1.187.67 1.187.67.433.305.648.63.648 1.168zm9.382-5.852c-.535-.014-.95.04-1.297.188-.1.04-.26.04-.274.167.055.053.063.14.11.214.08.134.218.313.346.407q.208.167.427.31c.26.16.555.255.81.416.145.094.293.213.44.313.073.05.12.14.214.172v-.02c-.046-.06-.06-.147-.105-.214-.067-.067-.134-.127-.2-.193a3.2 3.2 0 0 0-.695-.675c-.214-.146-.682-.35-.77-.595l-.013-.014c.146-.013.32-.066.46-.106.227-.06.435-.047.67-.106q.16-.042.32-.094v-.06c-.12-.12-.21-.283-.334-.395a9 9 0 0 0-1.104-.823c-.21-.134-.476-.22-.697-.334-.08-.04-.214-.06-.26-.127-.12-.146-.19-.34-.275-.514a18 18 0 0 1-.547-1.163c-.12-.262-.193-.523-.34-.763-.69-1.137-1.437-1.826-2.586-2.5-.247-.14-.543-.2-.856-.274-.167-.008-.334-.02-.5-.027-.11-.047-.216-.174-.31-.235-.38-.24-1.364-.76-1.644-.072-.18.434.267.862.422 1.082.115.153.26.328.34.5.047.116.06.235.107.356.106.294.207.622.347.897.073.14.153.287.247.413.054.073.146.107.167.227-.094.136-.1.334-.154.5-.24.757-.146 1.693.194 2.25.107.166.362.534.703.393.3-.12.234-.5.32-.835.02-.08.007-.133.048-.187v.015c.094.188.188.367.274.555.206.328.566.668.867.895.16.12.287.328.487.402v-.02h-.015c-.043-.058-.1-.086-.154-.133a3.5 3.5 0 0 1-.35-.4 9 9 0 0 1-.747-1.218c-.11-.21-.202-.436-.29-.643-.04-.08-.04-.2-.107-.24-.1.146-.247.273-.32.453-.127.288-.14.642-.188 1.01-.027.007-.014 0-.027.014-.214-.052-.287-.274-.367-.46-.2-.475-.233-1.238-.06-1.785.047-.14.247-.582.167-.716-.042-.127-.174-.2-.247-.303a2.5 2.5 0 0 1-.24-.427c-.16-.374-.24-.788-.414-1.162-.08-.173-.22-.354-.334-.513-.127-.18-.267-.307-.368-.52-.033-.073-.08-.194-.027-.274.014-.054.042-.075.094-.09.088-.072.335.022.422.062.247.1.455.194.662.334.094.066.195.193.315.226h.14c.214.047.455.014.655.073.355.114.675.28.962.46a5.95 5.95 0 0 1 2.085 2.286c.08.154.115.295.188.455.14.33.313.663.455.982.14.315.275.636.476.897.1.14.502.213.682.286.133.06.34.115.46.188.23.14.454.3.67.454.11.076.443.243.463.378" fill="url(#gMy)"/></svg></div><span>MySQL</span></div>
+    <div class="tech rv" data-tilt style="--c:#f05032"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.85 1.85 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.85 1.85 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187" fill="#F05032"/></svg></div><span>Git</span></div>
+    <div class="tech rv" data-tilt style="--c:#38bdf8"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.001 4.8q-4.8 0-6 4.8 1.8-2.4 4.2-1.8c.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12q4.8 0 6-4.8-1.8 2.4-4.2 1.8c-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8m-6 7.2q-4.8 0-6 4.8 1.8-2.4 4.2-1.8c.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576q4.8 0 6-4.8-1.8 2.4-4.2 1.8c-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12" fill="#38BDF8"/></svg></div><span>Tailwind</span></div>
+    <div class="tech rv" data-tilt style="--c:#a259ff"><div class="tico"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="fga"><rect x="0" y="0" width="12" height="8.25"/></clipPath><clipPath id="fgb"><rect x="12" y="0" width="12" height="8.25"/></clipPath><clipPath id="fgc"><rect x="0" y="8.25" width="12" height="7.5"/></clipPath><clipPath id="fgd"><rect x="12" y="8.25" width="12" height="7.5"/></clipPath><clipPath id="fge"><rect x="0" y="15.75" width="12" height="8.25"/></clipPath></defs><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491M12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539m-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49m-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019z" fill="#F24E1E" clip-path="url(#fga)"/><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491M12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539m-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49m-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019z" fill="#FF7262" clip-path="url(#fgb)"/><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491M12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539m-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49m-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019z" fill="#A259FF" clip-path="url(#fgc)"/><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491M12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539m-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49m-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019z" fill="#1ABCFE" clip-path="url(#fgd)"/><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491M12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539m-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49m-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019z" fill="#0ACF83" clip-path="url(#fge)"/></svg></div><span>Figma</span></div>
+  </div>
+</section>
+
+<!-- PENDIDIKAN + PENGALAMAN -->
+<section id="pengalaman">
+  <div class="rv">
+    <h2>Pendidikan dan Pengalaman</h2>
+    <p class="lead">
+      Kiri untuk riwayat pendidikan, kanan untuk pengalaman,
+      diurutkan dari yang terbaru. Ganti nama sekolah dan kampus
+      sesuai datamu.
+    </p>
+  </div>
+
+  <div class="duo">
+    <div class="duo-head">
+      <span>🎓 Riwayat Pendidikan</span>
+      <span></span>
+      <span>💼 Pengalaman</span>
+    </div>
+
+    <!-- Pengalaman: Content Creator -->
+    <div class="row">
+      <div></div>
+      <i class="dot"></i>
+
+      <div class="tilt rv R" data-tilt>
+        <div class="date">
+          2026 – sekarang
+          <span class="tag x">Pengalaman</span>
+        </div>
+        <h3>Content Creator</h3>
+        <p>
+          Membuat dan membagikan konten positif di media sosial
+          bersama komunitas yang terus bertumbuh.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pendidikan: Perguruan Tinggi -->
+    <div class="row">
+      <div class="tilt rv L" data-tilt>
+        <div class="date">
+          2024 – sekarang
+          <span class="tag">Pendidikan</span>
+        </div>
+        <h3>Bisnis Digital D4</h3>
+        <p>
+         POLITEKNIK NEGERI JEMBER. Mahasiswa berprestasi dan penerima
+          beasiswa.
+        </p>
+      </div>
+
+      <i class="dot e"></i>
+      <div></div>
+    </div>
+
+    <!-- Pengalaman: Beasiswa -->
+    <div class="row">
+      <div></div>
+      <i class="dot"></i>
+
+      <div class="tilt rv R" data-tilt>
+        <div class="date">
+          2023
+          <span class="tag x">Pengalaman</span>
+        </div>
+        <h3>Praktikum Lapangan Kerja</h3>
+        <p>
+          PKL di DIspenduk Capil Probolinggo selama 6 bulan .
+        </p>
+      </div>
+    </div>
+
+    <!-- Pengalaman: Organisasi -->
+    <div class="row">
+      <div></div>
+      <i class="dot"></i>
+
+      <div class="tilt rv R" data-tilt>
+        <div class="date">
+          2025 - 2026
+          <span class="tag x">Pengalaman</span>
+        </div>
+        <h3>Organisasi Kampus BSTARFEST </h3>
+        <p>
+          Aktif di kegiatan dan kepanitiaan sejak semester 2.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pendidikan: SMA / SMK -->
+    <div class="row">
+      <div class="tilt rv L" data-tilt>
+        <div class="date">
+          2021 – 2024
+          <span class="tag">Pendidikan</span>
+        </div>
+        <h3>SMA / SMK</h3>
+        <p>SMKN 2 KRAKSAAN, Rekayasa Perangkat Lunak.</p>
+      </div>
+
+      <i class="dot e"></i>
+      <div></div>
+    </div>
+
+    <!-- Pendidikan: SMP -->
+    <div class="row">
+      <div class="tilt rv L" data-tilt>
+        <div class="date">
+          2018 – 2021
+          <span class="tag">Pendidikan</span>
+        </div>
+        <h3>SMP</h3>
+        <p>SMPN 1 PAJARAKAN</p>
+      </div>
+
+      <i class="dot e"></i>
+      <div></div>
+    </div>
+  </div>
+</section>
+```
+
+<!-- PRESTASI -->
+<section id="prestasi">
+  <div class="rv"><h2>Prestasi</h2><p class="lead">Foto sertifikat, piala, dan momen penghargaan diambil dari folder assets (prestasi-1 sampai prestasi-6). Ganti judul dan keterangannya sesuai prestasimu.</p></div>
+  <div class="grid g3">
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s1" data-asset="assets/pbl"><b></b></div><div class="pmeta"><div class="date">2026</div><h3>Nama Prestasi 1</h3><p>Pbl di polije.</p></div></div>
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s2" data-asset="assets/nortiss"><b>assets/prestasi-2</b></div><div class="pmeta"><div class="date">2025</div><h3>Nama Prestasi 2</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s3" data-asset="assets/prestasi-3"><b>assets/prestasi-3</b></div><div class="pmeta"><div class="date">2025</div><h3>Nama Prestasi 3</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s4" data-asset="assets/prestasi-4"><b>assets/prestasi-4</b></div><div class="pmeta"><div class="date">2024</div><h3>Nama Prestasi 4</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s1" data-asset="assets/prestasi-5"><b>assets/prestasi-5</b></div><div class="pmeta"><div class="date">2024</div><h3>Nama Prestasi 5</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
+    <div class="tilt pcard rv" data-tilt><div class="pimg shot s2" data-asset="assets/prestasi-6"><b>assets/prestasi-6</b></div><div class="pmeta"><div class="date">2023</div><h3>Nama Prestasi 6</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
+  </div>
+</section>
+
+<!-- PORTOFOLIO -->
+<section id="portofolio">
+  <div class="rv"><h2>Portofolio</h2><p class="lead">Proyek pilihan yang pernah aku kerjakan.</p></div>
+  <div class="grid g3">
+
+    <div class="tilt work rv" data-tilt
+     data-photos="assets/PBL1.jpeg, assets/oke11.jpeg, assets/oke22.jpeg">
+  <div class="shot s1">
+    <img src="assets/PBL2.jpeg  " loading="lazy" onerror="this.remove()">
+  </div>
+  <div class="meta"><h3>Project Bacis Learning </h3><p>Mengikuti PBL di kampus polije dan membuat suatu project website dan aplikasi mobile.</p></div>
+</div>
+
+    <div class="tilt work rv" data-tilt
+    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s2">
+        <img src="assets/anjay.jpg" alt="Conten Creator" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="meta"><h3>Content Creator</h3><p>Membuat suatu video dengan tim untuk melakukan ajakan untuk mahasiswa baru yang ingin menanyakan atau meng informasikan tentang prodi BISNIS DIGITAL</p></div>
+    </div>
+
+    <div class="tilt work rv" data-tilt
+    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s3">
+        <img src="assets/proyek-3.jpg" alt="Talkshow Beasiswa" loading="lazy" onerror="this.remove()">
+        <i>Event</i>
+      </div>
+      <div class="meta"><h3>Talkshow Beasiswa</h3><p>Berbagi tips mendaftar dan lolos beasiswa.</p></div>
+    </div>
+
+    <div class="tilt work rv" data-tilt
+    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s4">
+        <img src="assets/proyek-4.jpg" alt="Tips Belajar Efektif" loading="lazy" onerror="this.remove()">
+        <i>Konten</i>
+      </div>
+      <div class="meta"><h3>Tips Belajar Efektif</h3><p>Video edukasi singkat untuk sesama pelajar.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+  <div class="rv"><h2>Galeri</h2><p class="lead">Kumpulan momen pilihan dari folder assets.</p></div>
+  <div class="gal" id="gal"></div>
+</section>
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="rv"><h2>My Contact</h2><p class="lead">Mau kolaborasi, endorsement, atau sekadar menyapa? Tulis pesanmu di sini, lalu kirim lewat WhatsApp atau email.</p></div>
+  <div class="contact">
+    <div class="cinfo">
+
+  <div class="mapbox rv">
+    <iframe
+      src="https://www.google.com/maps?q=Surabaya&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Peta lokasi"></iframe>
+    <span class="maptag">📍 Surabaya, Jawa Timur</span>
+  </div>
+
+  <div class="quick">
+    <a class="tilt cline rv" data-tilt id="cWa" href="#"><div class="ico">💬</div><div><h3>WhatsApp</h3><p id="tWa"></p></div></a>
+    <a class="tilt cline rv" data-tilt id="cMail" href="#"><div class="ico">✉️</div><div><h3>Email</h3><p id="tMail"></p></div></a>
+    <a class="tilt cline rv" data-tilt id="cIg" href="#"><div class="ico">📸</div><div><h3>Instagram</h3><p id="tIg"></p></div></a>
+    <a class="tilt cline rv" data-tilt id="cTt" href="#"><div class="ico">🎵</div><div><h3>TikTok</h3><p id="tTt"></p></div></a>
+  </div>
+
+</div>
+    <div class="cform rv">
+      <label>Nama<input id="fName" type="text" placeholder="Nama kamu" autocomplete="name"></label>
+      <label>Email (opsional)<input id="fEmail" type="email" placeholder="kamu@email.com" autocomplete="email"></label>
+      <label>Pesan<textarea id="fMsg" placeholder="Tulis pesanmu di sini"></textarea></label>
+      <div class="fbtns">
+        <a class="btn" id="sendWa" href="https://wa.me/qr/X5ILD5AFRHGKD1?s=v" target="_blank" rel="noopener">Kirim lewat WhatsApp</a>
+        <a class="btn ghost" id="sendMail" href="#">Kirim lewat Email</a>
+      </div>
+      <p id="fStatus" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+
+  <!-- teks berjalan -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Content Creator</span><b>✦</b><span>High-Achieving Student</span><b>✦</b><span>Penerima Beasiswa</span><b>✦</b><span>Kolaborasi</span><b>✦</b>
+      <span>Content Creator</span><b>✦</b><span>High-Achieving Student</span><b>✦</b><span>Penerima Beasiswa</span><b>✦</b><span>Kolaborasi</span><b>✦</b>
+    </div>
+  </div>
+
+  <!-- 3 kolom -->
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a href="#home" class="logo">Portofolio</a>
+      <p>Mahasiswa, content creator, dan penerima beasiswa. Berbagi cerita lewat konten yang positif dan inspiratif.</p>
+    </div>
+
+    <nav class="foot-col" aria-label="Menu footer">
+      <h4>Menu</h4>
+      <a href="#home">Home</a>
+      <a href="#hobi">Hobi</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#prestasi">Prestasi</a>
+      <a href="#portofolio">Portofolio</a>
+    </nav>
+
+    <div class="foot-col">
+      <h4>Hubungi</h4>
+      <a id="fWa" href="#">WhatsApp ↗</a>
+      <a id="fMail" href="#">Email ↗</a>
+      <a id="fIg" href="#">Instagram ↗</a>
+      <a id="fTt" href="#">TikTok ↗</a>
+    </div>
+  </div>
+
+  <!-- baris bawah -->
+  <div class="foot-bottom">
+    <span>© <span id="yr">2026</span> Ahmad Irfan. Semua hak dilindungi.</span>
+    <a href="#home" class="totop" aria-label="Kembali ke atas">↑</a>
+  </div>
+
+</footer>
+
+<!-- jendela detail portofolio -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="modal-x" data-close aria-label="Tutup">✕</button>
+
+    <div class="mslider" id="mSlider">
+  <div class="mtrack" id="mTrack"></div>
+  <span class="mcount" id="mCount"></span>
+  <button class="mnav prev" id="mPrev" type="button" aria-label="Foto sebelumnya">‹</button>
+  <button class="mnav next" id="mNext" type="button" aria-label="Foto berikutnya">›</button>
+</div>
+<div class="mthumbs" id="mThumbs"></div>
+  </div>
+</div>
+
+<!-- 1. library 3D dulu -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- 2. pengaturan, lalu script utama -->
+<script src="config.js"></script>
+<script src="main.js"></script>
+<!-- 3. sisanya (urutan penting: setelah main.js) -->
+<script src="hero-text.js"></script>
+<script src="modal.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>
