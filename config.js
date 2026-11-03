@@ -5,9 +5,9 @@
 /* ---------- Data kontak ---------- */
 const CONTACT = {
   wa: '6281234567890',     // nomor WhatsApp, awali 62 tanpa tanda + atau 0
-  email: 'nama@email.com',
-  ig: 'username',          // username Instagram tanpa @
-  tt: 'username'           // username TikTok tanpa @
+  email: 'pajarakanirfan@gmail.com',
+  ig: 'irfannnihhh_',          // username Instagram tanpa @
+  tt: 'irfnnn_14'           // username TikTok tanpa @
 };
 
 /* ---------- Foto dari folder assets ----------

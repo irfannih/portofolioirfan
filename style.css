@@ -848,3 +848,14 @@ body.lock{ overflow:hidden; }
   .ch{ opacity:1 !important; transform:none !important; filter:none !important; }
   .hello::after{ width:100%; }
 }
+
+/* ===== foto di jendela detail tampil utuh (tidak terpotong) + scrollbar disembunyikan ===== */
+.mslider{ height:300px; transition:height .5s cubic-bezier(.2,.9,.2,1); }
+.mslide .mbg{
+  position:absolute; inset:-24px;
+  background-size:cover; background-position:center;
+  filter:blur(24px) brightness(.65) saturate(1.2);
+}
+.mslide img{ position:relative; z-index:1; object-fit:contain; }
+.modal-card{ scrollbar-width:none; -ms-overflow-style:none; }     /* tetap bisa di-scroll, batang scroll tidak terlihat */
+.modal-card::-webkit-scrollbar{ display:none; }

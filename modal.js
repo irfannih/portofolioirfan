@@ -35,8 +35,13 @@
   const text  = document.getElementById('mText');
   const link  = document.getElementById('mLink');
 
-  let lastFocus = null, token = 0;
-  let slides = [], thumbBtns = [], idx = 0, gap = 14, slideW = 0;
+     let lastFocus = null, token = 0;
+
+  /* ----- bentuk foto di jendela detail: selalu 4:3 ----- */
+  const FIT   = 'cover';              // 'cover' = foto memenuhi bingkai 4:3 | 'contain' = foto utuh dengan latar buram
+  const FOKUS = 'center 30%';         // foto lebar: bagian yang dipertahankan saat terpotong
+  const FOKUS_TEGAK = 'center 5%';   // foto TEGAK (portrait): condong ke atas supaya kepala dan wajah tidak terpotong
+  let slides = [], thumbBtns = [], ratios = [], idx = 0, gap = 14, slideW = 0;
 
   /* ---------- posisi slider ---------- */
   function layout(animate) {
@@ -44,7 +49,12 @@
     const W = slider.clientWidth;
     const single = slides.length === 1;
     slideW = single ? W - 32 : W * 0.78;
-    gap = single ? 0 : 14;
+        gap = single ? 0 : 14;
+
+    // semua foto berbentuk 4:3
+    const maxH = Math.min(innerHeight * 0.58, 520);
+    slideW = Math.min(single ? W - 32 : W * 0.78, maxH * 4 / 3);
+    slider.style.height = Math.round(slideW * 3 / 4) + 'px';
     track.style.gap = gap + 'px';
     slides.forEach(function (s) { s.style.width = slideW + 'px'; });
     const x = (W - slideW) / 2 - idx * (slideW + gap);
@@ -67,11 +77,11 @@
   }
 
   /* ---------- geser dengan jari / mouse ---------- */
-  let dragging = false, startX = 0, dx = 0, baseX = 0, moved = false;
+  let dragging = false, startX = 0, startY = 0, dx = 0, baseX = 0, moved = false;
 
   slider.addEventListener('pointerdown', function (e) {
     if (slides.length < 2 || e.target.closest('.mnav')) return;
-    dragging = true; moved = false; startX = e.clientX; dx = 0;
+    dragging = true; moved = false; startX = e.clientX; startY = e.clientY; dx = 0;
     baseX = (slider.clientWidth - slideW) / 2 - idx * (slideW + gap);
     track.style.transition = 'none';
     slider.setPointerCapture(e.pointerId);
@@ -81,8 +91,9 @@
     if (!dragging) return;
     dx = e.clientX - startX;
     if (Math.abs(dx) > 6) moved = true;
+    // ada hambatan di ujung supaya terasa "mentok" tapi tetap halus
     let d = dx;
-    if ((idx === 0 && dx > 0) || (idx === slides.length - 1 && dx < 0)) d = dx * 0.3;   // mentok di ujung
+    if ((idx === 0 && dx > 0) || (idx === slides.length - 1 && dx < 0)) d = dx * 0.3;
     track.style.transform = 'translateX(' + (baseX + d) + 'px)';
   });
   function endDrag() {
@@ -110,20 +121,35 @@
   /* ---------- membangun isi slider ---------- */
   function abs(src) { try { return new URL(src, location.href).href; } catch (e) { return src; } }
 
-  function build(list, fallbackClass) {
+    function build(list, fallbackClass) {
     track.innerHTML = ''; thumbs.innerHTML = '';
-    slides = []; thumbBtns = []; idx = 0;
+    slides = []; thumbBtns = []; ratios = []; idx = 0;
 
     if (!list.length) {
       const s = document.createElement('div');
       s.className = 'mslide on ' + (fallbackClass || 's1');
-      track.appendChild(s); slides.push(s);
+      track.appendChild(s); slides.push(s); ratios.push(1.6);
     } else {
-      list.forEach(function (src, i) {
+      list.forEach(function (o, i) {
+        const src = o.src;
+        ratios.push(o.w / o.h);
         const s = document.createElement('div');
         s.className = 'mslide';
+        // foto tegak (potret) tampil utuh di tengah bingkai 4:3 dengan latar buram dari foto itu sendiri
+        const mode = FIT === 'auto' ? ((o.w / o.h) < 1.2 ? 'contain' : 'cover') : FIT;
+        if (mode === 'contain') {
+          const bgd = document.createElement('div');
+          bgd.className = 'mbg';
+          bgd.style.cssText = 'position:absolute;inset:-30px;background-size:cover;background-position:center;' +
+                              'filter:blur(28px) brightness(.6) saturate(1.3);background-image:url("' + src + '")';
+          s.appendChild(bgd);
+        }
         const im = document.createElement('img');
         im.src = src; im.alt = 'Foto ' + (i + 1); im.draggable = false;
+        im.style.position = 'relative'; im.style.zIndex = '1';
+        im.style.objectFit = mode;
+        im.style.objectPosition = mode === 'cover' ? FOKUS : 'center';
+        if (mode === 'contain') im.style.filter = 'drop-shadow(0 12px 28px rgba(0,0,0,.5))';
         s.appendChild(im);
         track.appendChild(s); slides.push(s);
 
@@ -166,11 +192,12 @@
     if (card.dataset.link) { link.href = card.dataset.link; link.hidden = false; } else { link.hidden = true; }
 
     // tampilkan dulu, foto yang gagal dimuat dibuang
-    build(wanted.slice(0, 1), fallback);
+    const firstObj = wanted.length ? [{ src: wanted[0], w: (mainImg && mainImg.naturalWidth) || 16, h: (mainImg && mainImg.naturalHeight) || 10 }] : [];
+    build(firstObj, fallback);
     Promise.all(wanted.map(function (src) {
       return new Promise(function (res) {
         const im = new Image();
-        im.onload = function () { res(src); };
+        im.onload = function () { res({ src: src, w: im.naturalWidth, h: im.naturalHeight }); };
         im.onerror = function () { res(null); };
         im.src = src;
       });
