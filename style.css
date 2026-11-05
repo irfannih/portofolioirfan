@@ -871,3 +871,8 @@ body.lock{ overflow:hidden; }
 .techgrid + .skill-sub{ margin-top:40px; }
 .tico .emo{ font-size:38px; line-height:1; }
 .tech span{ text-align:center; line-height:1.2; }
+
+.container-utama {
+  /* Memberikan jarak aman agar tidak tertutup poni layar di bagian atas */
+  padding-top: env(safe-area-inset-top); 
+}
