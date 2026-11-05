@@ -859,3 +859,9 @@ body.lock{ overflow:hidden; }
 .mslide img{ position:relative; z-index:1; object-fit:contain; }
 .modal-card{ scrollbar-width:none; -ms-overflow-style:none; }     /* tetap bisa di-scroll, batang scroll tidak terlihat */
 .modal-card::-webkit-scrollbar{ display:none; }
+/* sembunyikan hero lama sampai hero.js selesai membangun hero baru */
+#home:not(.hero2){ visibility:hidden; animation:heroAman 0s 2.5s forwards; }
+@keyframes heroAman{ to{ visibility:visible; } }
+
+/* karosel hobi lama tidak pernah ditampilkan */
+#hobi .hobi-stage, #hobi .hnav{ display:none !important; }
