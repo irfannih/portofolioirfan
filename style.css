@@ -865,3 +865,9 @@ body.lock{ overflow:hidden; }
 
 /* karosel hobi lama tidak pernah ditampilkan */
 #hobi .hobi-stage, #hobi .hnav{ display:none !important; }
+
+/* ===== KEAHLIAN: dua kelompok ===== */
+.skill-sub{ font-family:var(--head); font-size:24px; margin:0 0 16px; color:var(--text); }
+.techgrid + .skill-sub{ margin-top:40px; }
+.tico .emo{ font-size:38px; line-height:1; }
+.tech span{ text-align:center; line-height:1.2; }

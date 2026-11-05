@@ -3,14 +3,14 @@
   if (!home) return;
 
   /* ============ PENGATURAN: ubah di sini ============ */
-  const PERAN  = ['Content Creator', 'High-Achieving Student', 'Penerima Beasiswa'];   // teks yang diketik bergantian
+  const PERAN  = ['Mahasiswa Bisnis Digital', 'Politeknik Negeri Jember', 'Content Creator'];   // teks di bawah nama
   const BADGE  = 'Terbuka untuk kolaborasi';
-  const CHIPS  = [                                                                      // kartu kaca yang melayang di sekitar foto
-    { t: 'Content Creator',        e: '🎬' },
-    { t: 'High-Achieving Student', e: '🎓' },
-    { t: 'Beasiswa',               e: '🏅' }
+   const CHIPS  = [                                                                      // tiga kartu di sebelah foto
+    { t: 'Bisnis Digital',          e: '💻' },
+    { t: 'Politeknik Negeri Jember', e: '🎓' },
+    { t: 'Jurusan Bisnis',              e: '📚' }
   ];
-  const CINCIN = 'CONTENT CREATOR ✦ HIGH-ACHIEVING STUDENT ✦ PENERIMA BEASISWA ✦ ';    // tulisan yang berputar mengelilingi foto
+  const CINCIN = 'BISNIS DIGITAL ✦ POLITEKNIK NEGERI JEMBER ✦ MAHASISWA BERPRESTASI ✦ ';   // tulisan yang berputar
   const TOMBOL1 = ['Lihat Portofolio →', '#portofolio'];
   const TOMBOL2 = ['Hubungi Saya', '#kontak'];
 
