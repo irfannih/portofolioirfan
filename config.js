@@ -16,23 +16,4 @@ const ASSETS = {
   heroMode: 'soft',        // 'soft' = foto masih ada background, tepinya dipudarkan | 'cutout' = PNG sudah tanpa background
   heroY: '-9%',            // geser foto utama: minus = naik, plus = turun
   heroScale: 1,            // ukuran foto utama: 1 = normal, 1.1 = lebih besar
-
-  hobi: [
-    'assets/futsal',
-    'assets/ngopi',
-    'assets/pendaki',
-    'assets/FF',
-    'assets/develop',
-    'assets/badminton'
-  ],
-
-  galeri: [
-    'assets/bjir',
-    'assets/we',
-    'assets/oy',
-    'assets/oke',
-    'assets/sayaaa',
-    'assets/pendaki2',
-    'assets/jurbis1'
-  ]
 };

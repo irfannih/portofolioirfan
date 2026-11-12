@@ -17,15 +17,12 @@
   <a href="#home" class="logo" aria-label="Beranda">Portofolio</a>
   <nav id="nav">
     <a href="#home" class="on">Home</a>
-    <a href="#hobi">Hobi</a>
     <a href="#keahlian">Keahlian</a>
     <a href="#pengalaman">Pengalaman</a>
     <a href="#prestasi">Prestasi</a>
     <a href="#portofolio">Portofolio</a>
-    <a href="#galeri">Galeri</a>
     <a href="#kontak">Kontak</a>
   </nav>
-
   <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">☰</button>
 </header>
 
@@ -50,7 +47,7 @@
       <div class="photo" id="photo">
     <img
         id="img"
-        src="assets/irfann1.png"
+        src="assets/irfann1.webp"
         alt="Foto Irfan"
     >
 
@@ -138,13 +135,6 @@
   </div>
 </section>
 
-<!-- HOBI -->
-<section id="hobi">
-  <div class="rv"><h2>Hobi</h2><p class="lead">Hal-hal yang bikin aku semangat. Arahkan kursor ke karosel untuk menjeda putaran, atau pakai tombol panah untuk menggesernya.</p></div>
-  <div class="hobi-stage" id="hobiStage"><div class="carousel" id="carousel"></div></div>
-  <div class="hnav"><button id="hPrev" aria-label="Hobi sebelumnya">‹</button><span id="hName">Fotografi</span><button id="hNext" aria-label="Hobi berikutnya">›</button></div>
-</section>
-
 <!-- KEAHLIAN -->
 <section id="keahlian">
   <div class="rv"><h2>Keahlian</h2><p class="lead">Keahlian teknis dan kreatif yang aku kuasai. Arahkan kursor ke kartunya untuk melihat efek sinarnya.</p></div>
@@ -173,183 +163,224 @@
 </section>
 
 <!-- PENDIDIKAN + PENGALAMAN -->
+<!-- PENDIDIKAN + PENGALAMAN -->
 <section id="pengalaman">
   <div class="rv">
     <h2>Pendidikan dan Pengalaman</h2>
-    <p class="lead">
-      Kiri untuk riwayat pendidikan, kanan untuk pengalaman,
-      diurutkan dari yang terbaru. Ganti nama sekolah dan kampus
-      sesuai datamu.
-    </p>
+    <p class="lead">Riwayat akademik dan perjalanan pengalaman profesional saya.</p>
   </div>
 
-  <div class="duo">
-    <div class="duo-head">
-      <span>🎓 Riwayat Pendidikan</span>
-      <span></span>
-      <span>💼 Pengalaman</span>
-    </div>
+  <div class="split-timeline">
+    <!-- KOLOM KIRI: EDUCATION -->
+    <div class="timeline-col">
+      <h3 class="col-title">Education</h3>
+      <div class="timeline-list">
 
-    <!-- Pengalaman: Content Creator -->
-    <div class="row">
-      <div></div>
-      <i class="dot"></i>
-
-      <div class="tilt rv R" data-tilt>
-        <div class="date">
-          2026 – sekarang
-          <span class="tag x">Pengalaman</span>
+        <!-- Education Item 1 -->
+        <div class="t-item rv">
+          <div class="t-badge">1</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/polijee.webp" alt="Logo Polije">
+                </div>
+                <h4>Politeknik Negeri Jember</h4>
+              </div>
+              <span class="t-year">2024 – Present</span>
+            </div>
+            <h5 class="t-role">Bisnis Digital D4</h5>
+            <div class="t-sub">
+              <span>Jurusan Bisnis</span>
+              <span class="t-tag">Undergraduate</span>
+            </div>
+            <p>Mahasiswa berprestasi dan penerima beasiswa.</p>
+          </div>
         </div>
-        <h3>Content Creator</h3>
-        <p>
-          Membuat dan membagikan konten positif di media sosial
-          bersama komunitas yang terus bertumbuh.
-        </p>
+
+        <!-- Education Item 2 -->
+        <div class="t-item rv">
+          <div class="t-badge">2</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/smk.webp" alt="Logo SMKN 2 Kraksaan">
+                </div>
+                <h4>SMKN 2 Kraksaan</h4>
+              </div>
+              <span class="t-year">2021 – 2024</span>
+            </div>
+            <h5 class="t-role">Rekayasa Perangkat Lunak</h5>
+            <div class="t-sub">
+              <span>Vocational High School</span>
+              <span class="t-tag">RPL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Item 3 -->
+        <div class="t-item rv">
+          <div class="t-badge">3</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/smpp.webp" alt="Logo SMPN 1 Pajarakan">
+                </div>
+                <h4>SMPN 1 Pajarakan</h4>
+              </div>
+              <span class="t-year">2018 – 2021</span>
+            </div>
+            <h5 class="t-role">Junior High School</h5>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Pendidikan: Perguruan Tinggi -->
-    <div class="row">
-      <div class="tilt rv L" data-tilt>
-        <div class="date">
-          2024 – sekarang
-          <span class="tag">Pendidikan</span>
+    <!-- KOLOM KANAN: EXPERIENCE -->
+    <div class="timeline-col">
+      <h3 class="col-title">Pengalaman</h3>
+      <div class="timeline-list">
+
+        <!-- Experience Item 1 -->
+        <div class="t-item rv">
+          <div class="t-badge">1</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/contt.webp" alt="Logo Content Creator">
+                </div>
+                <h4>Content Creator</h4>
+              </div>
+              <span class="t-year">2026 – Present</span>
+            </div>
+            <h5 class="t-role">Social Media & Video Creator</h5>
+            <div class="t-sub">
+              <span>Independent</span>
+              <span class="t-tag">Creator</span>
+            </div>
+            <p>Membuat dan membagikan konten positif di media sosial bersama komunitas yang terus bertumbuh.</p>
+          </div>
         </div>
-        <h3>Bisnis Digital D4</h3>
-        <p>
-         POLITEKNIK NEGERI JEMBER. Mahasiswa berprestasi dan penerima
-          beasiswa.
-        </p>
-      </div>
 
-      <i class="dot e"></i>
-      <div></div>
-    </div>
-
-    <!-- Pengalaman: Beasiswa -->
-    <div class="row">
-      <div></div>
-      <i class="dot"></i>
-
-      <div class="tilt rv R" data-tilt>
-        <div class="date">
-          2023
-          <span class="tag x">Pengalaman</span>
+        <!-- Experience Item 2 -->
+        <div class="t-item rv">
+          <div class="t-badge">2</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/capill.webp" alt="Logo Dispenduk Capil">
+                </div>
+                <h4>Dispenduk Capil Probolinggo</h4>
+              </div>
+              <span class="t-year">2023</span>
+            </div>
+            <h5 class="t-role">Praktikum Lapangan Kerja (PKL)</h5>
+            <div class="t-sub">
+              <span>Probolinggo</span>
+              <span class="t-tag">Internship</span>
+            </div>
+            <p>Melaksanakan tugas praktikum lapangan kerja selama 6 bulan.</p>
+          </div>
         </div>
-        <h3>Praktikum Lapangan Kerja</h3>
-        <p>
-          PKL di DIspenduk Capil Probolinggo selama 6 bulan .
-        </p>
-      </div>
-    </div>
 
-    <!-- Pengalaman: Organisasi -->
-    <div class="row">
-      <div></div>
-      <i class="dot"></i>
-
-      <div class="tilt rv R" data-tilt>
-        <div class="date">
-          2025 - 2026
-          <span class="tag x">Pengalaman</span>
+        <!-- Experience Item 3 -->
+        <div class="t-item rv">
+          <div class="t-badge">3</div>
+          <div class="t-card">
+            <div class="t-header">
+              <div class="t-brand">
+                <div class="t-icon">
+                  <img src="assets/fa.webp" alt="Logo BSTARFEST">
+                </div>
+                <h4>BSTARFEST Organisasi Kampus</h4>
+              </div>
+              <span class="t-year">2025 – 2026</span>
+            </div>
+            <h5 class="t-role">Panitia & Anggota Aktif</h5>
+            <div class="t-sub">
+              <span>Politeknik Negeri Jember</span>
+              <span class="t-tag">Organization</span>
+            </div>
+            <p>Aktif dalam berbagai kegiatan kepanitiaan dan operasional acara kampus.</p>
+          </div>
         </div>
-        <h3>Organisasi Kampus BSTARFEST </h3>
-        <p>
-          Aktif di kegiatan dan kepanitiaan sejak semester 2.
-        </p>
+
       </div>
-    </div>
-
-    <!-- Pendidikan: SMA / SMK -->
-    <div class="row">
-      <div class="tilt rv L" data-tilt>
-        <div class="date">
-          2021 – 2024
-          <span class="tag">Pendidikan</span>
-        </div>
-        <h3>SMA / SMK</h3>
-        <p>SMKN 2 KRAKSAAN, Rekayasa Perangkat Lunak.</p>
-      </div>
-
-      <i class="dot e"></i>
-      <div></div>
-    </div>
-
-    <!-- Pendidikan: SMP -->
-    <div class="row">
-      <div class="tilt rv L" data-tilt>
-        <div class="date">
-          2018 – 2021
-          <span class="tag">Pendidikan</span>
-        </div>
-        <h3>SMP</h3>
-        <p>SMPN 1 PAJARAKAN</p>
-      </div>
-
-      <i class="dot e"></i>
-      <div></div>
     </div>
   </div>
 </section>
 
-<!-- PRESTASI -->
-<section id="prestasi">
-  <div class="rv"><h2>Sertifikat</h2><p class="lead">Foto sertifikat, piala, dan momen penghargaan diambil dari folder assets (prestasi-1 sampai prestasi-6). Ganti judul dan keterangannya sesuai prestasimu.</p></div>
-  <div class="grid g3">
-    <div class="tilt pcard rv" data-tilt><div class="pimg shot s1" data-asset="assets/pbl"><b>Magangg</b></div><div class="pmeta"><div class="date">2026</div><h3>PKL</h3><p>Pbl di polije.</p></div></div>
-    <div class="tilt pcard rv" data-tilt><div class="pimg shot s2" data-asset="assets/nortiss"><b>Nortis</b></div><div class="pmeta"><div class="date">2025</div><h3>Sertifikat Nortis</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
-    <div class="tilt pcard rv" data-tilt><div class="pimg shot s3" data-asset="assets/ept"><b>EPT</b></div><div class="pmeta"><div class="date">2025</div><h3>Sertifikat EPT</h3><p>Lulus ujian EPT.</p></div></div>
-    <div class="tilt pcard rv" data-tilt><div class="pimg shot s4" data-asset="assets/prestasi-4"><b>LSP</b></div><div class="pmeta"><div class="date">2024</div><h3>Sertifikat LSP</h3><p>Penyelenggara atau keterangan singkat.</p></div></div>
-</div>
-</section>
-
-<!-- PORTOFOLIO -->
+<!-- PORTOFOLIO & SERTIFIKAT (GABUNGAN) -->
 <section id="portofolio">
-  <div class="rv"><h2>Portofolio</h2><p class="lead">Proyek pilihan yang pernah aku kerjakan.</p></div>
-  <div class="grid g3">
-
-    <div class="tilt work rv" data-tilt
-     data-photos="assets/PBL1.jpeg, assets/oke11.jpeg, assets/pbl.jpeg">
-  <div class="shot s1">
-    <img src="assets/PBL2.jpeg  " loading="lazy" onerror="this.remove()">
+  <div class="rv">
+    <h2>Portofolio & Sertifikat</h2>
+    <p class="lead">Koleksi proyek pilihan dan bukti penghargaan yang pernah aku capai. Gunakan tombol di bawah untuk memfilter.</p>
   </div>
-  <div class="meta"><h3>Project Bacis Learning </h3><p>Mengikuti PBL di kampus polije dan membuat suatu project website dan aplikasi mobile.</p></div>
-</div>
 
-    <div class="tilt work rv" data-tilt
-    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
-      <div class="shot s2">
-        <img src="assets/anjay.jpg" alt="Conten Creator" loading="lazy" onerror="this.remove()">
-      </div>
-      <div class="meta"><h3>Content Creator</h3><p>Membuat suatu video dengan tim untuk melakukan ajakan untuk mahasiswa baru yang ingin menanyakan atau meng informasikan tentang prodi BISNIS DIGITAL</p></div>
+  <!-- Tombol Filter -->
+  <div class="filter-menu rv">
+    <button class="filter-btn active" data-filter="semua">Semua</button>
+    <button class="filter-btn" data-filter="project">My Projects</button>
+    <button class="filter-btn" data-filter="sertifikat">Sertifikat</button>
+  </div>
+
+  <!-- Wadah Grid (ditambah class portfolio-grid) -->
+  <div class="grid g3 portfolio-grid">
+
+    <!-- ========================================== -->
+    <!-- KELOMPOK PROJECT (Tambah class f-project)  -->
+    <!-- ========================================== -->
+    <div class="tilt work rv f-project" data-tilt data-photos="assets/PBL1.jpeg, assets/oke11.jpeg, assets/pbl.jpeg">
+      <div class="shot s1"><img src="assets/PBL2.webp" loading="lazy" onerror="this.remove()"></div>
+      <div class="meta"><h3>Project Basic Learning</h3><p>Mengikuti PBL di kampus polije dan membuat suatu project website dan aplikasi mobile.</p></div>
     </div>
 
-    <div class="tilt work rv" data-tilt
-    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
-      <div class="shot s3">
-        <img src="assets/proyek-3.jpg" alt="Talkshow Beasiswa" loading="lazy" onerror="this.remove()">
-        <i>Event</i>
-      </div>
+    <div class="tilt work rv f-project" data-tilt data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s2"><img src="assets/anjay.jpg" alt="Content Creator" loading="lazy" onerror="this.remove()"></div>
+      <div class="meta"><h3>Content Creator</h3><p>Membuat suatu video dengan tim untuk ajakan maba terkait prodi BISNIS DIGITAL.</p></div>
+    </div>
+
+    <div class="tilt work rv f-project" data-tilt data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s3"><img src="assets/proyek-3.jpg" alt="Talkshow Beasiswa" loading="lazy" onerror="this.remove()"><i>Event</i></div>
       <div class="meta"><h3>Talkshow Beasiswa</h3><p>Berbagi tips mendaftar dan lolos beasiswa.</p></div>
     </div>
 
-    <div class="tilt work rv" data-tilt
-    data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
-      <div class="shot s4">
-        <img src="assets/proyek-4.jpg" alt="Tips Belajar Efektif" loading="lazy" onerror="this.remove()">
-        <i>Konten</i>
-      </div>
+    <div class="tilt work rv f-project" data-tilt data-photos="assets/PBL1.jpeg, assets/PBL3.jpeg, assets/PBL4.jpeg">
+      <div class="shot s4"><img src="assets/proyek-4.jpg" alt="Tips Belajar Efektif" loading="lazy" onerror="this.remove()"><i>Konten</i></div>
       <div class="meta"><h3>Tips Belajar Efektif</h3><p>Video edukasi singkat untuk sesama pelajar.</p></div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- KELOMPOK SERTIFIKAT (Tambah class f-sertifikat) -->
+    <!-- ============================================= -->
+    <div class="tilt pcard rv f-sertifikat" data-tilt>
+      <div class="pimg shot s1" data-asset="assets/PKL"><b>Magangg</b></div>
+      <div class="pmeta"><div class="date">2026</div><h3>PKL</h3><p>Pbl di polije.</p></div>
+    </div>
+
+    <div class="tilt pcard rv f-sertifikat" data-tilt>
+      <div class="pimg shot s2" data-asset="assets/nortiss"><b>Nortis</b></div>
+      <div class="pmeta"><div class="date">2025</div><h3>Sertifikat Nortis</h3><p>Penyelenggara atau keterangan singkat.</p></div>
+    </div>
+
+    <div class="tilt pcard rv f-sertifikat" data-tilt>
+      <div class="pimg shot s3" data-asset="assets/ept"><b>EPT</b></div>
+      <div class="pmeta"><div class="date">2025</div><h3>Sertifikat EPT</h3><p>Lulus ujian EPT.</p></div>
+    </div>
+
+    <div class="tilt pcard rv f-sertifikat" data-tilt>
+      <div class="pimg shot s4" data-asset="assets/LSP"><b>LSP</b></div>
+      <div class="pmeta"><div class="date">2024</div><h3>Sertifikat LSP</h3><p>Penyelenggara atau keterangan singkat.</p></div>
     </div>
 
   </div>
 </section>
 
-<!-- GALERI -->
-<section id="galeri">
-  <div class="rv"><h2>Galeri</h2><p class="lead">Kumpulan momen pilihan dari folder assets.</p></div>
-  <div class="gal" id="gal"></div>
-</section>
 <!-- KONTAK -->
 <section id="kontak">
   <div class="rv"><h2>My Contact</h2><p class="lead">Mau kolaborasi, endorsement, atau sekadar menyapa? Tulis pesanmu di sini, lalu kirim lewat WhatsApp atau email.</p></div>
@@ -411,7 +442,6 @@
     <nav class="foot-col" aria-label="Menu footer">
       <h4>Menu</h4>
       <a href="#home">Home</a>
-      <a href="#hobi">Hobi</a>
       <a href="#keahlian">Keahlian</a>
       <a href="#pengalaman">Pengalaman</a>
       <a href="#prestasi">Sertifikat</a>

@@ -6,9 +6,9 @@
   const PERAN  = ['Mahasiswa Bisnis Digital', 'Politeknik Negeri Jember', 'Content Creator'];   // teks di bawah nama
   const BADGE  = 'Terbuka untuk kolaborasi';
    const CHIPS  = [                                                                      // tiga kartu di sebelah foto
-    { t: 'Bisnis Digital',          e: '💻' },
-    { t: 'Politeknik Negeri Jember', e: '🎓' },
-    { t: 'Jurusan Bisnis',              e: '📚' }
+    { t: 'Bisnis Digital',          e: '' , img: 'assets/bsd.webp' },
+    { t: 'Politeknik Negeri Jember', e: '', img: 'assets/polijee.webp' },
+    { t: 'Jurusan Bisnis',              e: '' , img: 'assets/bisnis.webp' }
   ];
   const CINCIN = 'BISNIS DIGITAL ✦ POLITEKNIK NEGERI JEMBER ✦ MAHASISWA BERPRESTASI ✦ ';   // tulisan yang berputar
   const TOMBOL1 = ['Lihat Portofolio →', '#portofolio'];
@@ -281,8 +281,9 @@
           '<text><textPath href="#' + ringId + '" textLength="' + (circ - 6) + '" lengthAdjust="spacing">' + esc(CINCIN) + '</textPath></text></svg>' +
         '<div class="h2-photo' + (heroMode === 'soft' ? ' soft' : '') + '" id="h2Photo"></div>' +
         CHIPS.slice(0, 3).map(function (c, i) {
-          return '<div class="h2-chip c' + (i + 1) + '"><b>' + c.e + '</b>' + esc(c.t) + '</div>';
-        }).join('') +
+  const iconContent = c.img ? '<img src="' + c.img + '" alt="' + esc(c.t) + '" class="chip-logo">' : c.e;
+  return '<div class="h2-chip c' + (i + 1) + '"><b>' + iconContent + '</b>' + esc(c.t) + '</div>';
+}).join('') +
         '<div class="h2-orb"></div>' +
       '</div>' +
     '</div>' +
@@ -325,16 +326,10 @@
   }
 
   /* ---------- gerakan 3D mengikuti kursor ---------- */
+ /* ---------- gerakan 3D mengikuti kursor (dimatikan efek tilt-nya biar tombol burger diam) ---------- */
   const rig = document.getElementById('h2Rig');
-  if (canHover && !reduce) {
-    home.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      const b = home.getBoundingClientRect();
-      rig.style.setProperty('--mx', ((e.clientX - b.left) / b.width - .5).toFixed(3));
-      rig.style.setProperty('--my', ((e.clientY - b.top) / b.height - .5).toFixed(3));
-    });
-    home.addEventListener('pointerleave', function () {
-      rig.style.setProperty('--mx', 0); rig.style.setProperty('--my', 0);
-    });
+  if (rig) {
+    rig.style.setProperty('--mx', 0);
+    rig.style.setProperty('--my', 0);
   }
 })();

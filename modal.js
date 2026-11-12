@@ -1,245 +1,259 @@
 (function () {
-  /* jendela detail dibuat oleh script ini sendiri, jadi tidak perlu HTML tambahan di index.html */
+  /* Hapus modal lama jika ada agar tidak bentrok */
   const oldModal = document.getElementById('modal');
   if (oldModal) oldModal.remove();
+
+  /* Inject Struktur Modal Split Modern ke HTML */
   document.body.insertAdjacentHTML('beforeend', `
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-bg" data-close></div>
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <button class="modal-x" data-close aria-label="Tutup">✕</button>
-    <div class="mslider" id="mSlider">
-      <div class="mtrack" id="mTrack"></div>
-      <span class="mcount" id="mCount"></span>
-      <button class="mnav prev" id="mPrev" type="button" aria-label="Foto sebelumnya">‹</button>
-      <button class="mnav next" id="mNext" type="button" aria-label="Foto berikutnya">›</button>
-    </div>
-    <div class="mthumbs" id="mThumbs"></div>
-    <div class="mbody">
-      <span class="mtag" id="mTag"></span>
-      <h3 id="mTitle"></h3>
-      <p id="mText"></p>
-      <a class="btn" id="mLink" href="#" target="_blank" rel="noopener" hidden>Lihat Proyek ↗</a>
+    <div class="modal-grid">
+      
+      <!-- Sisi Kiri: Panggung Foto Adaptif -->
+      <div class="modal-stage" id="mStage">
+        <div class="modal-img-wrap">
+          <img id="mMainImg" src="" alt="Detail Foto" draggable="false">
+        </div>
+        
+        <!-- Navigasi Multi-Foto -->
+        <div class="modal-nav" id="mNav" hidden>
+          <button class="mnav-btn" id="mPrev" type="button" aria-label="Foto sebelumnya">‹</button>
+          <span class="mcount" id="mCount">1 / 1</span>
+          <button class="mnav-btn" id="mNext" type="button" aria-label="Foto berikutnya">›</button>
+        </div>
+      </div>
+
+      <!-- Sisi Kanan: Deskripsi & Informasi -->
+      <div class="modal-details">
+        <div class="details-top">
+          <span class="mtag" id="mTag"></span>
+          <h3 id="mTitle"></h3>
+          <p id="mText"></p>
+        </div>
+        <div class="details-bottom">
+          <a class="btn mlink" id="mLink" href="#" target="_blank" rel="noopener" hidden>Lihat Proyek ↗</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>`);
 
-  const modal  = document.getElementById('modal');
-  const slider = document.getElementById('mSlider');
-  const track  = document.getElementById('mTrack');
-  const thumbs = document.getElementById('mThumbs');
-  const count  = document.getElementById('mCount');
+  // Elemen DOM
+  const modal = document.getElementById('modal');
+  const stage = document.getElementById('mStage');
+  const mainImg = document.getElementById('mMainImg');
+  const tag = document.getElementById('mTag');
+  const title = document.getElementById('mTitle');
+  const text = document.getElementById('mText');
+  const link = document.getElementById('mLink');
+  const navBox = document.getElementById('mNav');
+  const count = document.getElementById('mCount');
   const btnPrev = document.getElementById('mPrev');
   const btnNext = document.getElementById('mNext');
-  const tag   = document.getElementById('mTag');
-  const title = document.getElementById('mTitle');
-  const text  = document.getElementById('mText');
-  const link  = document.getElementById('mLink');
 
-     let lastFocus = null, token = 0;
+  let photoList = [];
+  let currentIndex = 0;
+  let lastFocus = null;
+  let token = 0;
 
-  /* ----- bentuk foto di jendela detail: selalu 4:3 ----- */
-  const FIT   = 'cover';              // 'cover' = foto memenuhi bingkai 4:3 | 'contain' = foto utuh dengan latar buram
-  const FOKUS = 'center 30%';         // foto lebar: bagian yang dipertahankan saat terpotong
-  const FOKUS_TEGAK = 'center 5%';   // foto TEGAK (portrait): condong ke atas supaya kepala dan wajah tidak terpotong
-  let slides = [], thumbBtns = [], ratios = [], idx = 0, gap = 14, slideW = 0;
-
-  /* ---------- posisi slider ---------- */
-  function layout(animate) {
-    if (!slides.length) return;
-    const W = slider.clientWidth;
-    const single = slides.length === 1;
-    slideW = single ? W - 32 : W * 0.78;
-        gap = single ? 0 : 14;
-
-    // semua foto berbentuk 4:3
-    const maxH = Math.min(innerHeight * 0.58, 520);
-    slideW = Math.min(single ? W - 32 : W * 0.78, maxH * 4 / 3);
-    slider.style.height = Math.round(slideW * 3 / 4) + 'px';
-    track.style.gap = gap + 'px';
-    slides.forEach(function (s) { s.style.width = slideW + 'px'; });
-    const x = (W - slideW) / 2 - idx * (slideW + gap);
-    track.style.transition = animate === false ? 'none' : '';
-    track.style.transform = 'translateX(' + x + 'px)';
-
-    slides.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
-    thumbBtns.forEach(function (b, i) { b.classList.toggle('on', i === idx); });
-    count.textContent = (idx + 1) + ' / ' + slides.length;
-    btnPrev.disabled = idx === 0;
-    btnNext.disabled = idx === slides.length - 1;
-
-    const active = thumbBtns[idx];
-    if (active) thumbs.scrollTo({ left: active.offsetLeft - thumbs.clientWidth / 2 + active.clientWidth / 2, behavior: 'smooth' });
+  // Helper URL Absolut
+  function abs(src) {
+    try { return new URL(src, location.href).href; } catch (e) { return src; }
   }
 
-  function go(i) {
-    idx = Math.max(0, Math.min(slides.length - 1, i));
-    layout(true);
-  }
+  // Update Tampilan Foto
+  function updatePhoto(animate) {
+    if (!photoList.length) return;
 
-  /* ---------- geser dengan jari / mouse ---------- */
-  let dragging = false, startX = 0, startY = 0, dx = 0, baseX = 0, moved = false;
-
-  slider.addEventListener('pointerdown', function (e) {
-    if (slides.length < 2 || e.target.closest('.mnav')) return;
-    dragging = true; moved = false; startX = e.clientX; startY = e.clientY; dx = 0;
-    baseX = (slider.clientWidth - slideW) / 2 - idx * (slideW + gap);
-    track.style.transition = 'none';
-    slider.setPointerCapture(e.pointerId);
-    slider.classList.add('drag');
-  });
-  slider.addEventListener('pointermove', function (e) {
-    if (!dragging) return;
-    dx = e.clientX - startX;
-    if (Math.abs(dx) > 6) moved = true;
-    // ada hambatan di ujung supaya terasa "mentok" tapi tetap halus
-    let d = dx;
-    if ((idx === 0 && dx > 0) || (idx === slides.length - 1 && dx < 0)) d = dx * 0.3;
-    track.style.transform = 'translateX(' + (baseX + d) + 'px)';
-  });
-  function endDrag() {
-    if (!dragging) return;
-    dragging = false;
-    slider.classList.remove('drag');
-    const limit = slideW * 0.16;
-    if (dx < -limit) go(idx + 1);
-    else if (dx > limit) go(idx - 1);
-    else layout(true);
-  }
-  slider.addEventListener('pointerup', endDrag);
-  slider.addEventListener('pointercancel', endDrag);
-
-  btnPrev.addEventListener('click', function () { go(idx - 1); });
-  btnNext.addEventListener('click', function () { go(idx + 1); });
-
-  /* klik foto di samping = pindah ke foto itu */
-  track.addEventListener('click', function (e) {
-    if (moved) { moved = false; return; }
-    const s = e.target.closest('.mslide');
-    if (s) go(slides.indexOf(s));
-  });
-
-  /* ---------- membangun isi slider ---------- */
-  function abs(src) { try { return new URL(src, location.href).href; } catch (e) { return src; } }
-
-    function build(list, fallbackClass) {
-    track.innerHTML = ''; thumbs.innerHTML = '';
-    slides = []; thumbBtns = []; ratios = []; idx = 0;
-
-    if (!list.length) {
-      const s = document.createElement('div');
-      s.className = 'mslide on ' + (fallbackClass || 's1');
-      track.appendChild(s); slides.push(s); ratios.push(1.6);
+    if (animate) {
+      mainImg.style.opacity = '0';
+      mainImg.style.transform = 'scale(0.96)';
+      setTimeout(function () {
+        mainImg.src = photoList[currentIndex];
+        mainImg.onload = function () {
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
+        };
+      }, 120);
     } else {
-      list.forEach(function (o, i) {
-        const src = o.src;
-        ratios.push(o.w / o.h);
-        const s = document.createElement('div');
-        s.className = 'mslide';
-        // foto tegak (potret) tampil utuh di tengah bingkai 4:3 dengan latar buram dari foto itu sendiri
-        const mode = FIT === 'auto' ? ((o.w / o.h) < 1.2 ? 'contain' : 'cover') : FIT;
-        if (mode === 'contain') {
-          const bgd = document.createElement('div');
-          bgd.className = 'mbg';
-          bgd.style.cssText = 'position:absolute;inset:-30px;background-size:cover;background-position:center;' +
-                              'filter:blur(28px) brightness(.6) saturate(1.3);background-image:url("' + src + '")';
-          s.appendChild(bgd);
-        }
-        const im = document.createElement('img');
-        im.src = src; im.alt = 'Foto ' + (i + 1); im.draggable = false;
-        im.style.position = 'relative'; im.style.zIndex = '1';
-        im.style.objectFit = mode;
-        im.style.objectPosition = mode === 'cover' ? FOKUS : 'center';
-        if (mode === 'contain') im.style.filter = 'drop-shadow(0 12px 28px rgba(0,0,0,.5))';
-        s.appendChild(im);
-        track.appendChild(s); slides.push(s);
-
-        const b = document.createElement('button');
-        b.type = 'button'; b.setAttribute('aria-label', 'Lihat foto ' + (i + 1));
-        const ti = document.createElement('img'); ti.src = src; ti.alt = ''; ti.draggable = false;
-        b.appendChild(ti);
-        b.addEventListener('click', function () { go(i); });
-        thumbs.appendChild(b); thumbBtns.push(b);
-      });
+      mainImg.src = photoList[currentIndex];
+      mainImg.style.opacity = '1';
+      mainImg.style.transform = 'scale(1)';
     }
 
-    const multi = slides.length > 1;
-    slider.classList.toggle('single', !multi);
-    thumbs.hidden = !multi;
-    count.hidden = !multi;
-    layout(false);
+    count.textContent = (currentIndex + 1) + ' / ' + photoList.length;
+    btnPrev.disabled = currentIndex === 0;
+    btnNext.disabled = currentIndex === photoList.length - 1;
+
+    // Update link gambar jika tidak ada data-link proyek
+    if (!link.dataset.hasCustomLink && photoList.length) {
+      link.href = photoList[currentIndex];
+      link.textContent = 'Buka Gambar Penuh ↗';
+      link.hidden = false;
+    }
   }
 
-  function open(card) {
-    const s = card.querySelector('.shot');
-    const mainImg = s && s.querySelector('img');
-    const extra = (card.dataset.photos || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean);
+  function goNext() {
+    if (currentIndex < photoList.length - 1) {
+      currentIndex++;
+      stage.classList.remove('zoomed');
+      updatePhoto(true);
+    }
+  }
 
-    // foto utama dulu, lalu foto tambahan (tanpa duplikat)
-    const wanted = [];
-    if (mainImg) wanted.push(abs(mainImg.currentSrc || mainImg.src));
-    extra.forEach(function (x) { const a = abs(x); if (wanted.indexOf(a) < 0) wanted.push(a); });
+  function goPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      stage.classList.remove('zoomed');
+      updatePhoto(true);
+    }
+  }
 
-    const my = ++token;
-    let fallback = 's1';
-    if (s) s.classList.forEach(function (c) { if (/^s\d$/.test(c)) fallback = c; });
+  // Fitur Click to Zoom pada Sertifikat / Gambar
+  mainImg.addEventListener('click', function () {
+    stage.classList.toggle('zoomed');
+  });
 
-    // teks
-    const t = card.querySelector('.shot i, .date');
-    tag.textContent = t ? t.textContent : '';
-    tag.hidden = !tag.textContent;
-    title.textContent = card.querySelector('h3').textContent;
-    text.textContent = card.dataset.detail || card.querySelector('.meta p, .pmeta p').textContent;
-    if (card.dataset.link) { link.href = card.dataset.link; link.hidden = false; } else { link.hidden = true; }
+  // Fungsi Membuka Modal
+  function openModal(card) {
+    const currentToken = ++token;
+    stage.classList.remove('zoomed');
 
-    // tampilkan dulu, foto yang gagal dimuat dibuang
-    const firstObj = wanted.length ? [{ src: wanted[0], w: (mainImg && mainImg.naturalWidth) || 16, h: (mainImg && mainImg.naturalHeight) || 10 }] : [];
-    build(firstObj, fallback);
-    Promise.all(wanted.map(function (src) {
-      return new Promise(function (res) {
-        const im = new Image();
-        im.onload = function () { res({ src: src, w: im.naturalWidth, h: im.naturalHeight }); };
-        im.onerror = function () { res(null); };
-        im.src = src;
-      });
-    })).then(function (ok) {
-      if (my !== token) return;
-      build(ok.filter(Boolean), fallback);
+    // 1. Ambil Foto
+    const s = card.querySelector('.shot, .pimg');
+    const primaryImg = s ? s.querySelector('img') : null;
+    const extraPhotos = (card.dataset.photos || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean);
+
+    photoList = [];
+    if (primaryImg && (primaryImg.currentSrc || primaryImg.src)) {
+      photoList.push(abs(primaryImg.currentSrc || primaryImg.src));
+    }
+    extraPhotos.forEach(function (x) {
+      const absoluteUrl = abs(x);
+      if (photoList.indexOf(absoluteUrl) < 0) photoList.push(absoluteUrl);
     });
 
+    // 2. Preload Gambar
+    Promise.all(photoList.map(function (src) {
+      return new Promise(function (resolve) {
+        const img = new Image();
+        img.onload = function () { resolve(src); };
+        img.onerror = function () { resolve(null); };
+        img.src = src;
+      });
+    })).then(function (validPhotos) {
+      if (currentToken !== token) return;
+      const filtered = validPhotos.filter(Boolean);
+      if (filtered.length) {
+        photoList = filtered;
+        navBox.hidden = photoList.length <= 1;
+        updatePhoto(false);
+      }
+    });
+
+    currentIndex = 0;
+    navBox.hidden = photoList.length <= 1;
+
+    // 3. Ambil Tag / Tanggal
+    const t = card.querySelector('.shot i, .date, .t-tag');
+    tag.textContent = t ? t.textContent.trim() : '';
+    tag.hidden = !tag.textContent;
+
+    // 4. Ambil Judul & Deskripsi
+    const h3 = card.querySelector('h3');
+    title.textContent = h3 ? h3.textContent.trim() : '';
+    const desc = card.dataset.detail || (card.querySelector('.meta p, .pmeta p') ? card.querySelector('.meta p, .pmeta p').textContent.trim() : '');
+    text.textContent = desc;
+
+    // 5. Pengaturan Tombol Link / Buka Gambar Penuh
+    if (card.dataset.link) {
+      link.href = card.dataset.link;
+      link.textContent = 'Lihat Proyek ↗';
+      link.dataset.hasCustomLink = 'true';
+      link.hidden = false;
+    } else if (photoList.length) {
+      link.href = photoList[0];
+      link.textContent = 'Buka Gambar Penuh ↗';
+      delete link.dataset.hasCustomLink;
+      link.hidden = false;
+    } else {
+      link.hidden = true;
+    }
+
+    updatePhoto(false);
+
+    // 6. Tampilkan Modal
     lastFocus = document.activeElement;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lock');
-    layout(false);
-    modal.querySelector('.modal-x').focus();
+
+    const closeBtn = modal.querySelector('.modal-x');
+    if (closeBtn) closeBtn.focus();
   }
 
-  function close() {
+  // Fungsi Menutup Modal
+  function closeModal() {
     token++;
+    stage.classList.remove('zoomed');
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lock');
     if (lastFocus) lastFocus.focus();
   }
 
-  // kartu yang bisa diklik (mau Prestasi juga? ganti '.work' jadi '.work, .pcard')
-  document.querySelectorAll('.work').forEach(function (card) {
+  // Navigasi & Drag Gesture
+  btnPrev.addEventListener('click', goPrev);
+  btnNext.addEventListener('click', goNext);
+
+  let startX = 0;
+  let isDragging = false;
+
+  stage.addEventListener('pointerdown', function (e) {
+    if (photoList.length <= 1 || e.target.closest('.modal-nav')) return;
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  stage.addEventListener('pointerup', function (e) {
+    if (!isDragging) return;
+    isDragging = false;
+    const diffX = e.clientX - startX;
+    if (diffX < -40) goNext();
+    else if (diffX > 40) goPrev();
+  });
+
+  stage.addEventListener('pointercancel', function () { isDragging = false; });
+
+  // Event Listener Klik Kartu Portofolio & Sertifikat
+  document.querySelectorAll('.work, .pcard').forEach(function (card) {
     card.tabIndex = 0;
     card.setAttribute('role', 'button');
-    card.addEventListener('click', function () { open(card); });
+    card.addEventListener('click', function () { openModal(card); });
     card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card);
+      }
     });
   });
 
+  // Tombol Silang & Keyboard Shortcut
   modal.addEventListener('click', function (e) {
-    if (e.target.closest('[data-close]')) close();
+    if (e.target.closest('[data-close]')) closeModal();
   });
+
   document.addEventListener('keydown', function (e) {
     if (!modal.classList.contains('open')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowRight') go(idx + 1);
-    if (e.key === 'ArrowLeft') go(idx - 1);
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') goNext();
+    if (e.key === 'ArrowLeft') goPrev();
   });
-  addEventListener('resize', function () { if (modal.classList.contains('open')) layout(false); });
+
+  window.addEventListener('resize', function () {
+    if (modal.classList.contains('open')) updatePhoto(false);
+  });
 })();
